@@ -41,10 +41,10 @@ function WishesList() {
               <div className="card--msg" key={index}>
                 <h3>Par {message.author}</h3>
                 <p>{message.content}</p>
-                <span className="first--heart">❤️</span>
-                <span className="second--heart">❤️</span>
-                <span className="third--heart">❤️</span>
-                <span className="fourth--heart">❤️</span>
+                <span className="first--heart" role="img" aria-label="heart">❤️</span>
+                <span className="second--heart" role="img" aria-label="heart">❤️</span>
+                <span className="third--heart" role="img" aria-label="heart">❤️</span>
+                <span className="fourth--heart" role="img" aria-label="heart">❤️</span>
               </div>
             )
           })

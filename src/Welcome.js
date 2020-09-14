@@ -37,11 +37,11 @@ function Welcome() {
   return(
     <section className="welcome--page">
       <div className="welcome--page--title">
-        <h1 className="title--page">Welcome Nathan 👼</h1>
+        <h1 className="title--page">Welcome Nathan <span role="img" aria-label="angel--baby">👼</span></h1>
         <p className="message--content">Laissez votre plus beau message pour les plus beaux parents qui arrive avec leur jeune Nathan ! </p>
       </div>
       <div>
-        <input type="text" placeholder="Ecrit par:" className="authour--input" ref={authorInput}></input>
+        <input type="text" placeholder="Ecrit par:" className="author--input" ref={authorInput}></input>
         <textarea
           id="inputDesc"
           rows="6"
