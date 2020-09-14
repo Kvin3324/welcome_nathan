@@ -51,7 +51,7 @@ function Welcome() {
           </div>
           <div className="form-group">
             <label>
-              <small>Votre jolie message pour les parents :)</small>
+              <small>Votre joli message pour les parents :)</small>
             </label>
             <textarea 
               className="form-control" 
