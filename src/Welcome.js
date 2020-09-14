@@ -41,17 +41,24 @@ function Welcome() {
         <p className="message--content">Laissez votre plus beau message pour les plus beaux parents qui arrive avec leur jeune Nathan ! </p>
       </div>
       <div>
-        <input type="text" placeholder="Ecrit par:" className="author--input" ref={authorInput}></input>
-        <textarea
-          id="inputDesc"
-          rows="6"
-          cols="90"
-          placeholder="Ajoutez une description"
-          ref={messageInput}
-        ></textarea>
-      </div>
-      <div className="btn--send">
-        <input type="button" value="Poster" className="button--send" onClick={sendMessage}></input>
+        <form>
+          <div className="form-group">
+            <label>
+              <small>Votre joli nom :)</small>
+            </label>
+            <input type="text" placeholder="Ecrit par:" ref={authorInput}/>
+          </div>
+          <div>
+            <label>
+              <small>Votre jolie message pour les parents :)</small>
+            </label>
+            <textarea 
+              className="form-group" 
+              ref={messageInput}
+              ></textarea>
+              <button type="submit" className="btn btn-primary">Poster</button>
+          </div>
+        </form>
       </div>
     </section>
   )
