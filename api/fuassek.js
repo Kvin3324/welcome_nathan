@@ -3,8 +3,8 @@ const {MongoClient} = require('mongodb');
 
 module.exports = async function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", process.env.NODE_ENV === "development" ? 'http://localhost:3000' : '');
-    
-    if (req.method !== 'POST' || !req.method !== 'GET') {
+
+    if (!["POST", "GET"].includes(req.method)) {
         return res.status(405).json({
             error: true,
             message: 'Bad method'
@@ -54,5 +54,5 @@ module.exports = async function (req, res) {
         return res.status(200).json({
             messages: [ ...messagesList ]
         });
-    } 
+    }
 };
