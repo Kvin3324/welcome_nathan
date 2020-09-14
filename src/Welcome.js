@@ -5,6 +5,8 @@ function Welcome() {
   const authorInput = React.useRef(null);
   const messageInput = React.useRef(null);
 
+  const [redirect, setRedirect] = React.useState(false);
+
   function sendMessage() {
     let url;
     if (process.env.NODE_ENV === "development") {
@@ -21,20 +23,21 @@ function Welcome() {
       body: JSON.stringify({
         content: messageInput.current.value,
         author: authorInput.current.value
-      }),
-      // mode: "no-cors"
+      })
     })
     .then(res => {
       if(res.status === 200) {
-        return <Redirect to="/whishesList"></Redirect>
+        return setRedirect(true);
       }
     })
   }
 
+  if (redirect) return <Redirect to="wishesList"></Redirect>
+
   return(
     <section className="welcome--page">
       <div className="welcome--page--title">
-        <h1 className="title--page">Welcome Nathan</h1>
+        <h1 className="title--page">Welcome Nathan 👼</h1>
         <p className="message--content">Laissez votre plus beau message pour les plus beaux parents qui nous arrive avec leur jeune Nathan ! </p>
       </div>
       <div>
