@@ -2,11 +2,12 @@ require("dotenv").config();
 const {MongoClient} = require('mongodb');
 
 module.exports = async function (req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", process.env.NODE_ENV === "development" ? 'http://localhost:3000' : '');
+    
     if (req.method !== 'POST' || !req.method !== 'GET') {
         return res.status(405).json({
             error: true,
-            message: 'Bad message'
+            message: 'Bad method'
         });
     }
 
