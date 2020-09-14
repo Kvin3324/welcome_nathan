@@ -45,7 +45,7 @@ function Welcome() {
         <textarea
           id="inputDesc"
           rows="6"
-          cols="80"
+          cols="90"
           placeholder="Ajoutez une description"
           ref={messageInput}
         ></textarea>
