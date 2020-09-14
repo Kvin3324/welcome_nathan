@@ -4,19 +4,29 @@ const {MongoClient} = require('mongodb');
 module.exports = async function (req, res) {
     res.setHeader("Access-Control-Allow-Origin", process.env.NODE_ENV === "development" ? 'http://localhost:3000' : '');
 
-    if (!["POST", "GET"].includes(req.method)) {
+    if (!["POST", "GET"].includes) {
         return res.status(405).json({
             error: true,
             message: 'Bad method'
         });
     }
 
-    const mongo = await MongoClient.connect(process.env.DB_ACCESS, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    });
+    let mongo;
+    let messagesCollections;
 
-    const messagesCollections = mongo.db('baby-nathan').collection('messages');
+    try {
+        mongo = await MongoClient.connect(process.env.DB_ACCESS, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+
+        messagesCollections = mongo.db().collection('messages');
+    } catch (error) {
+        return res.status(500).json({
+            error: true,
+            message: error.message
+        })
+    }
 
     if (req.method === 'POST') {
         const bodyProps = Object.keys(req.body);
@@ -31,7 +41,7 @@ module.exports = async function (req, res) {
             });
         }
 
-        await messagesCollection.insertOne({ ...req.body });
+        await messagesCollections.insertOne({ ...req.body });
 
         return res.status(200).json({
             message: 'Message added'
