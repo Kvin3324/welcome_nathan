@@ -56,7 +56,6 @@ input {
   color: #3A3A3A;
   border-color: #F7F6F7;
   background-color: white;
-  margin-left: 20px;
 }
 
 input::focus {
