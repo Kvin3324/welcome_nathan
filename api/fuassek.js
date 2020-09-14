@@ -11,22 +11,12 @@ module.exports = async function (req, res) {
         });
     }
 
-    let mongo;
-    let messagesCollections;
+    const mongo = await MongoClient.connect(process.env.DB_ACCESS, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
 
-    try {
-        mongo = await MongoClient.connect(process.env.DB_ACCESS, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-
-        messagesCollections = mongo.db().collection('messages');
-    } catch (error) {
-        return res.status(500).json({
-            error: true,
-            message: error.message
-        })
-    }
+    const messagesCollections = mongo.db().collection('messages');
 
     if (req.method === 'POST') {
         const bodyProps = Object.keys(req.body);
