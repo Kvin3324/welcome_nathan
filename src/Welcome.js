@@ -2,12 +2,13 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 function Welcome() {
+  const [redirect, setRedirect] = React.useState(false);
   const authorInput = React.useRef(null);
   const messageInput = React.useRef(null);
 
-  const [redirect, setRedirect] = React.useState(false);
+  function sendMessage(e) {
+    e.preventDefault();
 
-  function sendMessage() {
     let url;
     if (process.env.NODE_ENV === "development") {
       url = 'http://localhost:3000/api/fuassek';
@@ -40,24 +41,24 @@ function Welcome() {
         <h1 className="title--page">Welcome Nathan 👼</h1>
         <p className="message--content">Laissez votre plus beau message pour les plus beaux parents qui nous arrive avec leur jeune Nathan ! </p>
       </div>
-      <div>
-        <form>
+      <div className="container p-3">
+        <form className="" onSubmit={sendMessage}>
           <div className="form-group">
             <label>
               <small>Votre joli nom :)</small>
             </label>
-            <input type="text" placeholder="Ecrit par:" ref={authorInput}/>
+            <input type="text" placeholder="Ecrit par:" ref={authorInput} className="form-control"/>
           </div>
-          <div>
+          <div className="form-group">
             <label>
               <small>Votre jolie message pour les parents :)</small>
             </label>
             <textarea 
-              className="form-group" 
+              className="form-control" 
               ref={messageInput}
               ></textarea>
-              <button type="submit" className="btn btn-primary">Poster</button>
           </div>
+          <button type="submit" className="btn btn-primary">Poster</button>
         </form>
       </div>
     </section>
