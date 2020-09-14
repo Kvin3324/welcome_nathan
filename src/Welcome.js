@@ -6,7 +6,14 @@ function Welcome() {
   const messageInput = React.useRef(null);
 
   function sendMessage() {
-    return fetch('http://localhost:3000/api/fuassek', {
+    let url;
+    if (process.env.NODE_ENV === "development") {
+      url = 'http://localhost:3000/api/fuassek';
+    } else {
+      url = "https://welcome-nathan.vercel.app/api/fuassek";
+    }
+
+    return fetch(url, {
       method: "POST",
       headers: {
         "content-type": "Application/json"

@@ -6,8 +6,17 @@ function WishesList() {
     messagesList: []
   })
 
+  
+
   React.useEffect(() => {
-    fetch('http://localhost:3000/api/fuassek')
+    let url;
+    if (process.env.NODE_ENV === "development") {
+      url = 'http://localhost:3000/api/fuassek';
+    } else {
+      url = "https://welcome-nathan.vercel.app/api/fuassek";
+    }
+
+    fetch(url)
     .then(res => res.json())
     .then(dataParsed => {
       if (dataParsed.error) {
