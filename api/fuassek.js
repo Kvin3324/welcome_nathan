@@ -16,7 +16,7 @@ module.exports = async function (req, res) {
         useUnifiedTopology: true
     });
 
-    const messagesCollections = mongo.db().collection('messages');
+    const messagesCollections = mongo.db('baby-nathan').collection('messages');
 
     if (req.method === 'POST') {
         const bodyProps = Object.keys(req.body);
