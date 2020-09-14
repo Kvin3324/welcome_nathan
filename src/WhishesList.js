@@ -38,10 +38,20 @@ function WishesList() {
       <div className="list--messages">
         <h2>Liste des messages</h2>
         <p>Quelques messages pour vous apporter des voeux de naissance et souhaiter la bienvenue (et du courage...) au petit Nathan !</p>
-        <div className="card--msg">
-          <h3>Par Verral</h3>
-          <p>Go prendre des culs secs</p>
-        </div>
+        {
+          data.messagesList.map((message, index) => {
+            return (
+              <div className="card--msg" key={index}>
+                <h3>Par {message.author}</h3>
+                <p>{message.content}</p>
+                <span className="first--heart">❤️</span>
+                <span className="second--heart">❤️</span>
+                <span className="third--heart">❤️</span>
+                <span className="fourth--heart">❤️</span>
+              </div>
+            )
+          })
+        }
       </div>
     </section>
   )
