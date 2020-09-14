@@ -6,8 +6,6 @@ function WishesList() {
     messagesList: []
   })
 
-  
-
   React.useEffect(() => {
     let url;
     if (process.env.NODE_ENV === "development") {
@@ -28,7 +26,6 @@ function WishesList() {
       })
     })
   }, [])
-
 
   return(
     <section className="whishes--list">
