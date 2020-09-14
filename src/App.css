@@ -84,11 +84,54 @@ input::focus {
 }
 
 .banner--img {
-  width: 40vw;
+  width: 15vw;
 }
 
 .banner--img img {
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.list--messages h2, p {
+  font-family: "Nunito";
+}
+
+.card--msg {
+  margin-top: 10%;
+  width: 50vw;
+  padding: 0 12px;
+  border-radius: 20px;
+  border: solid 3px rgba(247, 246, 247, 1);
+  border-bottom-width: 8px;
+  background-color: white;
+  position: relative;
+}
+
+.first--heart {
+  position: absolute;
+  top: -6px;
+  left: -5px;
+  transform: rotate(344deg);
+}
+
+.second--heart {
+  position: absolute;
+  top: 77px;
+  left: -5px;
+  transform: rotate(333deg);
+}
+
+.third--heart {
+  position: absolute;
+  top: 77px;
+  transform: rotate(382deg);
+  right: -4px;
+}
+
+.fourth--heart {
+  position: absolute;
+  top: -8px;
+  transform: rotate(382deg);
+  right: -4px;
 }
